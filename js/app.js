@@ -59,10 +59,10 @@ const newsField = (newses) => {
         newsCard.innerHTML = `
         <div class="row rounded ">
         <div class="col-md-3 p-1">
-            <img src="${thumbnail_url}" class="img-fluid rounded-start ms-3" alt="">
+            <img src="${thumbnail_url}" class="w-100 rounded-start ms-3" alt="">
         </div>
-        <div class="col-md-9 p-3">
-                <h5 class="card-title">${title}</h5>
+        <div class="col-md-9  p-4">
+                <h4 class="card-title">${title}</h4>
                 <p class="card-text">${details.length > 700 ? details.slice(0, 700) + ' ...' : details}</p>
             <div class="card-body align-items-center">
                 <div class="card-text row ">
@@ -76,9 +76,9 @@ const newsField = (newses) => {
                     </div>
                     
                    </div>
-                   <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="eye.svg"
+                   <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="icon/eye.svg"
                    alt="">${news.total_view === null ? 'No Data Available' : news.total_view}</div>
-                   <div class="col-2 "><button class="btn border-danger " id="btn-details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="selectModal('${news._id}')"><img style="width: auto; height: 20px;" src="right-arrows.png" alt=""></button></div>
+                   <div class="col-2 "><button class="btn border-danger " id="btn-details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="selectModal('${news._id}')"><img style="width: auto; height: 20px;" src="icon/right-arrows.png" alt=""></button></div>
                 </div>
             </div>
         </div>
@@ -124,7 +124,7 @@ const displayModal = (info) => {
     const modelBody = document.getElementById('modal-Body');
     modelBody.innerHTML = `
         <div><h2 class="text-canter fw-bold">${info.title}</h2> </div> 
-        <img class="align-canter w-100 mb-5" src="${info.image_url}" alt="">
+        <img class=" w-100 mb-5" src="${info.image_url}" alt="">
         
           <p>${info.details}</p>
         `
