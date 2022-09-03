@@ -22,10 +22,10 @@
                         class="bg-danger text-white p-2 rounded">Capitol</span> Times</a>
                 <ul class="navbar-nav d-flex flex-row">
                     <li class="nav-item">
-                        <a class="nav-link text-danger" aria-current="page" href="#">Home</a>
+                        <a class="nav-link text-danger" aria-current="page" href="#">News</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <a class="nav-link" href="blog/blog.html">Link</a>
+                        <a class="nav-link" href="blog/blog.html">Blog</a>
                     </li>
                 </ul>
             </div>
@@ -55,7 +55,7 @@
 
             <!-- news count   -->
             <div class="py-2 my-3">
-                <h4><span id="found-news">0</span> items found </h4>
+                <h4><span id="found-news">0</span> items found for category <span id="ctg-nm"></span> </h4>
             </div>
 
             <!-- Sort By section  -->
@@ -97,8 +97,7 @@
 
         </section>
 
-        <!-- modal 
- -->
+        <!-- modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
             aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl ">
@@ -118,10 +117,6 @@
         </div>
 
     </main>
-
-
-
-
 
     <footer>
         <h5 class="text-center p-5 m-2">Copyright 2021 Capitol Times</h5>

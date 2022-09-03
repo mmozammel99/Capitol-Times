@@ -9,18 +9,21 @@ const loadedCategory = async () => {
     }
     catch (error) {
         console.log(error);
-
     }
 }
 
 const displayCategory = (catagories) => {
     const categoryList = document.getElementById('category');
+
     catagories.forEach(category => {
+
+        document.getElementById('ctg-nm').innerText =category.category_name; 
+
         const categoryUl = document.createElement('li');
         categoryUl.classList.add('nav-item')
-        categoryUl.innerHTML = ` 
-            <a class="nav-link  btn btn-outline-danger text-center ps-2 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
 
+        categoryUl.innerHTML = ` 
+            <a class="nav-link  btn btn-outline-danger text-center p-3 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
 
         categoryList.appendChild(categoryUl);
     });
@@ -51,7 +54,6 @@ const newsField = (newses) => {
     const newsField = document.getElementById('news-field');
     newsField.textContent = '';
 
-
     document.getElementById('found-news').innerText = newses.length;
 
     // news count
@@ -67,17 +69,17 @@ const newsField = (newses) => {
     else {
         notFound.classList.add('d-none');
     }
-    // news card 
 
+    // news card 
     newses.forEach(news => {
         const { thumbnail_url, title, details, author } = news;
 
         const newsCard = document.createElement('div');
         newsCard.classList.add('card');
-        newsCard.classList.add('my-2');
+        newsCard.classList.add('my-4');
         newsCard.innerHTML = `
         <div class="row rounded ">
-        <div class="col-md-3 p-1">
+        <div class="col-md-3 ps-3 py-1">
             <img src="${thumbnail_url}" class=" w-100 rounded-start" alt="">
         </div>
         <div class="col-md-9  px-4 d-flex flex-column">
@@ -107,7 +109,6 @@ const newsField = (newses) => {
     });
     toggleSpend(false);
 }
-
 
 
 const selectCategory = id => {
@@ -153,14 +154,12 @@ const displayModal = (info) => {
                     <div class="col-8 col-md-10 ">
                         <p>${info.author.name !== null ? info.author.name : 'No Data Available'} </p>
                     </div>
-                    
                    </div>
                    <div class="col-5 col-md-6 ps-5 "><i class="fa-sharp fa-solid fa-eye me-3"></i>${info.total_view === null ? 'No Data Available' : info.total_view}</div>
                 </div>
             </div>
-        
           <p>${info.details}</p>
-        `
+        `;
 
 
 
