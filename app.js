@@ -13,7 +13,7 @@ const displayCategory = (catagories) => {
         const categoryUl = document.createElement('li');
         categoryUl.classList.add('nav-item')
         categoryUl.innerHTML = ` 
-        <a class="nav-link text-danger btn btn-outline-dangertext-center ps-2 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
+        <a class="nav-link  btn btn-outline-danger text-center ps-2 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
 
         categoryList.appendChild(categoryUl);
 
@@ -21,4 +21,15 @@ const displayCategory = (catagories) => {
 }
 
 
+// news section 
+const loadedNews = async (category_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    newsField(data.data);
+}
 
+
+
+loadedCategory()
+loadedNews('08')
