@@ -9,15 +9,15 @@ const loadedCategory = async () => {
 
 const displayCategory = (catagories) => {
     const categoryList = document.getElementById('category');
-    for (const category of catagories) {
+    catagories.forEach(category => {
         const categoryUl = document.createElement('li');
         categoryUl.classList.add('nav-item')
         categoryUl.innerHTML = ` 
-        <a class="nav-link  btn btn-outline-danger text-center ps-2 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
+            <a class="nav-link  btn btn-outline-danger text-center ps-2 mt-3 me-2 border-0 fw-semibold" onclick="selectCategory('${category.category_id}')">${category.category_name}</a>`
+
 
         categoryList.appendChild(categoryUl);
-
-    };
+    });
 }
 
 
@@ -34,7 +34,7 @@ const loadedNews = async (category_id) => {
 const newsField = (newses) => {
     const newsField = document.getElementById('news-field');
     newsField.textContent = '';
- 
+
 
     document.getElementById('found-news').innerText = newses.length;
     // news count
@@ -49,22 +49,10 @@ const newsField = (newses) => {
         notFound.classList.add('d-none');
     }
     // news card 
-    for (const news of newses) {
+
+    newses.forEach(news => {
         const { image_url, title, details, author } = news;
-        const neon = news.total_view;
-         const arrayneon = [];
-          arrayneon.push(neon)
-        function test (){
-            const arr =[];
-            const ao = arrayneon[0]
-              for(let i=0; i<=26; i++){
-                  ao.push(i);
-                  arr.push(ao)
-                }
-                console.log(arr);
-      }
-        
-        console.log(arrayneon);
+        //     const neon = news.total_view;
         const newsCard = document.createElement('div');
         newsCard.classList.add('card');
         newsCard.classList.add('my-2');
@@ -75,7 +63,7 @@ const newsField = (newses) => {
         </div>
         <div class="col-md-8 p-3">
                 <h5 class="card-title">${title}</h5>
-                <p class="card-text">${details.length > 350 ? details.slice(0, 350) + ' ...' : title}</p>
+                <p class="card-text">${details.length > 350 ? details.slice(0, 350) + ' ...' : details}</p>
             <div class="card-body align-items-center">
                 <div class="card-text row ">
                    <div class="col-5 col-md-4 d-flex ">
@@ -84,12 +72,12 @@ const newsField = (newses) => {
                          alt="">
                     </div>
                     <div class="col-8 col-md-10 ">
-                        <p>${author.name !== null? author.name :'No Data Available'  } </p>
+                        <p>${author.name !== null ? author.name : 'No Data Available'} </p>
                     </div>
                     
                    </div>
                    <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="eye.svg"
-                   alt="">${news.total_view === null  ? 'No Data Available' : news.total_view }</div>
+                   alt="">${news.total_view === null ? 'No Data Available' : news.total_view}</div>
                    <div class="col-2 "><button class="btn border-danger"><img style="width: auto; height: 20px;" src="right-arrows.png" alt=""></button></div>
                 </div>
             </div>
@@ -97,7 +85,8 @@ const newsField = (newses) => {
     </div>
     `;
         newsField.appendChild(newsCard)
-    }
+
+    });
     toggleSpend(false);
 }
 
