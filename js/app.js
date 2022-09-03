@@ -2,13 +2,20 @@
 
 const loadedCategory = async () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayCategory(data.data.news_category);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        displayCategory(data.data.news_category);
+    }
+    catch (error) {
+        console.log(error);
+
+    }
 }
 
 const displayCategory = (catagories) => {
     const categoryList = document.getElementById('category');
+    document.getElementById('category-name').innerText = catagories.category_name;
     catagories.forEach(category => {
         const categoryUl = document.createElement('li');
         categoryUl.classList.add('nav-item')
@@ -24,20 +31,30 @@ const displayCategory = (catagories) => {
 // news section 
 const loadedNews = async (category_id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${category_id}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    newsField(data.data);
+    try {
+        const res = await fetch(url);
+        const data = await res.json();
+        newsField(data.data);
+    }
+
+    catch (error) {
+        console.log(error);
+
+    }
 }
 
 
 
 const newsField = (newses) => {
+ newses.sort((a,b) => {
+    return b.total_view - a.total_view;
+ })
     const newsField = document.getElementById('news-field');
     newsField.textContent = '';
 
 
     document.getElementById('found-news').innerText = newses.length;
-    document.getElementById('category-name').innerText = newses.category_name;
+
     // news count
     const notFound = document.getElementById('not-found-msg')
 
