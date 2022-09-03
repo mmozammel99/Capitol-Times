@@ -25,7 +25,7 @@
                         <a class="nav-link text-danger" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="blog/blog.html">Link</a>
                     </li>
                 </ul>
             </div>
@@ -52,17 +52,17 @@
     </header>
     <main class="container">
         <section>
-             
+
             <!-- news count   -->
             <div class="py-2 my-3">
-                <h4><span id="found-news">0</span> items found for category Entertainment</h4>
+                <h4><span id="found-news">0</span> items found for category <span id="category-name"></span></h4>
             </div>
             <!-- not found msg  -->
             <div>
                 <h2 id="not-found-msg" class="text-danger text-center d-none ">News Not Found</h2>
             </div>
-             <!-- spenner  -->
-             <div class="d-none p-5 m-5" id="lodging">
+            <!-- spenner  -->
+            <div class="d-none p-5 m-5" id="lodging">
                 <div class="d-flex justify-content-center">
                     <div class="spinner-border text-danger" role="status">
                         <span class="visually-hidden">Loading...</span>
@@ -73,27 +73,28 @@
             <div id="news-field">
 
             </div>
-          
+
         </section>
 
-<!-- modal 
+        <!-- modal 
  -->
- <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl ">
-      <div class="modal-content" >
-        <div class="modal-header">
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl ">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modal-Body">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="modal-body" id="modal-Body">
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          
-        </div>
-      </div>
-    </div>
-  </div>
 
     </main>
 

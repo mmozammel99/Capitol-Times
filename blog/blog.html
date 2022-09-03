@@ -22,10 +22,10 @@
                         class="bg-danger text-white p-2 rounded">Capitol</span> Times</a>
                 <ul class="navbar-nav d-flex flex-row">
                     <li class="nav-item">
-                        <a class="nav-link text-danger" aria-current="page" href="#">Home</a>
+                        <a class="nav-link " href="../index.html">Home</a>
                     </li>
                     <li class="nav-item ms-3">
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link text-danger" aria-current="page" href="#">Bolg</a>
                     </li>
                 </ul>
             </div>
@@ -34,10 +34,11 @@
 
     </header>
     <main>
+        <!-- blog  -->
         <section class="container mt-5 ">
-            <div class="border p-5">
-                <h2 class="text-center">Difference Between var, let, and const in JavaScript</h2>
-                <p> <span class="bg-danger rounded p-1 text-white">ANS: </span>In JavaScript, users can declare a
+            <div class="border p-5 mb-5">
+                <h2 class="text-center">Difference Between Arrow Function and Regular Function</h2>
+                <p> <span class="bg-danger rounded p-1 text-white me-1">ANS: </span>In JavaScript, users can declare a
                     variable using 3 keywords that are var, let, and const. In this article, we will see the differences
                     between the var, let, and const keywords. We will discuss the scope and other required concepts
                     about each keyword.
@@ -60,9 +61,9 @@
                     returns an error. The user cannot update the const variable once it is declared.
                 </p>
             </div>
-            <div class="border p-5">
+            <div class="border p-5 mb-5">
                 <h2 class="text-center">Difference Between var, let, and const in JavaScript</h2>
-                <p> <span class="bg-danger rounded p-1 text-white">ANS: </span>
+                <p> <span class="bg-danger rounded p-1 text-white me-1">ANS: </span>
                     An arrow function is also known as the fat arrow function. It is a new feature introduced in ES6
                     that is a more concise syntax for writing function expressions. Both regular JavaScript functions
                     and arrow functions work in a similar manner but there are some differences between them. Let's see
@@ -73,6 +74,253 @@
                     <li>Use of this keyword</li>
                     <li>Using a new keyword</li>
                 </ul>
+                <ol>
+                    <li>
+                        <h5>Syntax:</h5> A programmer can get the same result as regular functions by writing a few
+                        lines of code using
+                        arrow functions.
+
+                        Curly brackets are not required if only one expression is present.
+                        <br><br>
+                        <span class=" text-danger">// Regular function ES5: <br>
+                            var add = function(a, b) { return a + b;}; <br>
+                            // Arrow function ES6 <br>
+                            let add = (a, b) => { return a + b}; <br>
+                            //or <br>
+                            let add = (a, b) => a + b;</span>
+                        <br><br>
+
+                    </li>
+                    <li>
+                        <h5>Arguments binding</h5>
+                        <p>
+                            Arguments object inside the regular functions contains the list of arguments.
+                            <br><br>
+                            <span class="text-danger">// Object with Regular function
+                                <br><br>
+                                let showData = { <br>
+                                showArg: function(){ <br>
+                                console.log(arguments); <br>
+                                } <br>
+                                } <br> <br>
+                                showData.showArg(1,2,3); <br>
+                                // output {0:1,1:2,2:3}</span>
+                            <br> <br>
+                            The arrow function, on the opposite, doesn’t define arguments i.e. they do not have
+                            arguments binding.
+                            <br><br>
+                            <span class="text-danger">
+                                // Object with Arrow function <br> <br>
+                                let showData = { <br>
+                                showArg: ()=>console.log(arguments); <br>
+                                } <br> <br>
+                                showData.showArg(1,2,3); <br>
+                                // Uncaught ReferenceError: arguments is not defined br
+                            </span>
+                            <br><br>
+                            But you can easily access the arrow function arguments using a rest parameter ...args.
+                            <br><br>
+                            <span class="text-danger">
+                                // using rest parameters <br> <br>
+                                let showData = { <br>
+                                showArg: (...args)=>console.log(args); <br>
+                                } <br> <br>
+                                myFunc.showArgs(1, 2, 3, 4); // [1, 2, 3, 4] <br>
+                            </span>
+                        </p>
+                    </li>
+                    <li>
+                        <h5>Use of this keyword</h5>
+                        <p>
+                            Inside of a regular JavaScript function, this value is dynamic. The dynamic context means
+                            that the value of this depends on how the function is invoked.
+                            <br><br>
+                            <span class="text-danger">
+                                let name ={ <br>
+                                fullName:'abc',<br>
+                                printInRegular: function(){<br>
+                                console.log(`My Name is $<br>{this.fullName}`);<br>
+                                }, <br>
+                                printInArrow:()=>console.log<br>(`My Name is ${this.fullName}`)<br>
+                                } <br><br>
+                                name.printInRegular(); <br> // My Name is abc<br>
+                                name.printInArrow(); <br> // My Name is undefined<br><br>
+                            </span>
+                            The behavior of this inside of an arrow, function differs considerably from the regular
+                            function’s this behavior as an arrow function does not have its own “this” keyword.
+
+                            The value of this inside an arrow function remains the same throughout the lifecycle of the
+                            function and is always bound to the value of this in the closest non-arrow parent function
+                            which means No matter how or where being executed, this value inside of an arrow function
+                            always equals this value from the outer function. <br><br>
+                            <span class="text-danger">const myObject = { <br>
+                                myMethod(items) {<br>
+                                console.log(this);<br> // logs myObject <br>
+                                const callback = () => { <br>
+                                console.log(this); <br> // this takes value from myMethod(outer func) <br>
+                                };<br>
+                                items.forEach(callback);<br>
+                                }<br>
+                                };<br>
+                                <br>
+                                myObject.myMethod([1, 2, 3]);</span>
+                        </p>
+                    </li>
+                    <li>
+                        <h5>Using a new keyword</h5>
+                        <p>
+                            Regular functions are constructible and callable. They can be called using the new keyword.
+                            <br><br>
+                            <span class="text-danger">
+                                function Car(color) {<br>
+                                this.color = color;<br>
+                                }<br><br>
+
+                                const redCar = new Car('red');<br>
+                                redCar instanceof Car;<br> // => true<br><br>
+                            </span>
+                            But, the arrow functions are only callable and not constructible, i.e., arrow functions can
+                            never be used as constructor functions. <br><br>
+                            <span class="text-danger">
+                                const Car = (color) => {<br>
+                                this.color = color;<br>
+                                };<br><br>
+
+                                const redCar = new Car('red');<br> // TypeError: Car is not a constructor<br><br>
+                            </span>
+                        </p>
+                    </li>
+                    <h4>Summary</h4>
+                    <p>this value inside a regular function is dynamic and depends on how the function is invoked. But
+                        this inside the arrow function is bound lexically and equals to this of the outer function. Fat
+                        arrow methods always bind this a value to the class instance.</p>
+                </ol>
+                </p>
+            </div>
+
+            <div class="border p-5 mb-5">
+                <h2 class="text-center">Array Methods Explained : Filter vs Map vs Find vs Foreach</h2>
+                <p> <span class="bg-danger rounded p-1 text-white me-1">ANS: </span>Okay so yeah we know they are
+                    different
+                    they have different purpose and goals still we don’t bother to understand them. <br>
+
+                    Let’s get straight to them.<br>
+
+                    We use arrays. A lot of arrays. We use arrays to show search lists, items added into a user cart,
+                    How many time you logged into your system right ?<br>
+
+                    Javascript Array inbuilt object provides some really cool and helpful functions to manage our data
+                    stored in arrays. We are going to take a look on this methods really quick.<br>
+
+                    Let’s start with the easy one.<br>
+                <ol>
+                    <li>
+                        <h4>Foreach</h4> The easy one right ? we all know why this method is used for and even you don’t
+                        know about this method the name pretty much explains everything. <br>
+
+                        Foreach takes a callback function and run that callback function on each element of array one by
+                        one.<br>
+                        For every element on the array we are calling a callback which gets element & its index provided
+                        by foreach.<br>
+
+                        Basically forEach works as a traditional for loop looping over the array and providing you array
+                        elements to do operations on them.<br>
+
+                        okay! so clear ? then let’s filter some arrays.<br> <br>
+                    </li>
+                    <li>
+                        <h4>Filter</h4>
+                        <p>Whenever you have to filter an array Javascript inbuilt method to filter your array is the
+                            right choice to use. Filter let you provide a callback for every element and returns a
+                            filtered array. <br>
+
+                            The main difference between forEach and filter is that forEach just loop over the array and
+                            executes the callback but filter executes the callback and check its return value. If the
+                            value is true element remains in the resulting array but if the return value is false the
+                            element will be removed for the resulting array. <br>
+                            See how easy it was. We passed a callback to filter which got run against every element in
+                            the array. In the callback we checked if the element !== 2 if the condition fails ( when
+                            elem was equal to 1 or 3 ) include them into the resulting array else don’t include the
+                            element in the resulting array. <br>
+
+                            Also take notice filter does not update the existing array it will return a new filtered
+                            array every time. <br> <br></p>
+                    </li>
+                    <li>
+                        <h4>Map</h4>
+                        <p>One of my favourite and most used array method of all time. As a ReactJS developer I use map
+                            a lot inside my application UI. <br>
+
+                            Map like filter & foreach takes a callback and run it against every element on the array but
+                            whats makes it unique is it generate a new array based on your existing array.
+                            <br>
+                            Map ran through every element of the array, multiplied it to 10 and returned the element
+                            which will be going to store inside our resulting array. <br>
+
+                            Like filter, map also returns an array. The provided callback to map modifies the array
+                            elements and save them into the new array upon completion that array get returned as the
+                            mapped array. <br> <br>
+                        </p>
+                    </li>
+                    <li>
+                        <h4>Find</h4>
+                        <p>The find method executes the callbackFn function once for each index of the array until the
+                            callbackFn returns a truthy value. If so, find immediately returns the value of that
+                            element. Otherwise, find returns undefined. <br>
+
+                            callbackFn is invoked for every index of the array, not just those with assigned values.
+                            This means it may be less efficient for sparse arrays, compared to methods that only visit
+                            assigned values.<br>
+
+                            If a thisArg parameter is provided to find, it will be used as the this value inside each
+                            invocation of the callbackFn. If it is not provided, then undefined is used.<br>
+
+                            The find method does not mutate the array on which it is called, but the function provided
+                            to callbackFn can. If so, the elements processed by find are set before the first invocation
+                            of callbackFn. <br>
+                            Therefore:
+
+                            callbackFn will not visit any elements added to the array after the call to find begins.
+                            Elements which are assigned to indexes already visited, or to indexes outside the range,
+                            will not be visited by callbackFn.
+                            If an existing, yet-unvisited element of the array is changed by callbackFn, its value
+                            passed to the callbackFn will be the value at the time find visits that element's index.
+                            Elements that are deleted are still visited.</p>
+                    </li>
+                </ol>
+                </p>
+            </div>
+
+            <div class="border p-5 mb-5">
+                <h2 class="text-center">Template Strings in JavaScript</h2>
+                <p> <span class="bg-danger rounded p-1 text-white me-1">ANS: </span>Template strings are a powerful
+                    feature of modern JavaScript released in ES6. It lets us insert/interpolate variables and
+                    expressions into strings without needing to concatenate like in older versions of JavaScript. It
+                    allows us to create strings that are complex and contain dynamic elements. Another great thing that
+                    comes with template strings are tags. Tags are functions that take a string and the decomposed parts
+                    of the string as parameters and are great for converting strings to different entities.
+                    Template literals are enclosed by backtick (`) characters instead of double or single quotes. <br>
+                    <br>
+
+                    Along with having normal strings, template literals can also contain other parts called
+                    placeholders, which are embedded expressions delimited by a dollar sign and curly braces:
+                    ${expression}. The strings and placeholders get passed to a function — either a default function, or
+                    a function you supply. The default function (when you don't supply your own) just performs string
+                    interpolation to do substitution of the placeholders and then concatenate the parts into a single
+                    string.
+                    <br> <br>
+                    To supply a function of your own, precede the template literal with a function name; the result is
+                    called a tagged template. In that case, the template literal is passed to your tag function, where
+                    you can then perform whatever operations you want on the different parts of the template literal.
+                    <br> <br>
+                    To escape a backtick in a template literal, put a backslash (\) before the backtick.
+                    <br><br>
+                    `\`` === '`' // --> true
+                    <br><br>
+
+                    Dollar signs can be escaped as well to prevent interpolation.
+                    <br><br>
+                    `\${1}` === '${1}' // --> true
                 </p>
             </div>
 

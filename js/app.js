@@ -37,10 +37,13 @@ const newsField = (newses) => {
 
 
     document.getElementById('found-news').innerText = newses.length;
+    document.getElementById('category-name').innerText = newses.category_name;
     // news count
     const notFound = document.getElementById('not-found-msg')
+
     // not found msg 
     if (newses.length === 0) {
+
         notFound.classList.remove('d-none');
         toggleSpend(false);
         return;
@@ -58,8 +61,8 @@ const newsField = (newses) => {
         newsCard.classList.add('my-2');
         newsCard.innerHTML = `
         <div class="row rounded ">
-        <div class="col-md-3 p-1">
-            <img src="${thumbnail_url}" class="w-100 rounded-start ms-3" alt="">
+        <div class="col-md-3 p-md-1">
+            <img src="${thumbnail_url}" class=" w-100 rounded-start" alt="">
         </div>
         <div class="col-md-9  p-4">
                 <h4 class="card-title">${title}</h4>
@@ -123,8 +126,24 @@ const loadedModal = async (news_id) => {
 const displayModal = (info) => {
     const modelBody = document.getElementById('modal-Body');
     modelBody.innerHTML = `
-        <div><h2 class="text-canter fw-bold">${info.title}</h2> </div> 
-        <img class=" w-100 mb-5" src="${info.image_url}" alt="">
+    <img class=" w-100 mb-5" src="${info.image_url}" alt="">
+    <h2 class="text-canter fw-bold">${info.title}</h2> 
+    <div class="card-body align-items-center">
+                <div class="card-text row ">
+                   <div class="col-5 col-md-4 d-flex ">
+                    <div class="col-4 col-md-2">
+                        <img class="rounded-circle" style="width: 30px; height:auto ;" src="${info.author.img}"
+                         alt="">
+                    </div>
+                    <div class="col-8 col-md-10 ">
+                        <p>${info.author.name !== null ? info.author.name : 'No Data Available'} </p>
+                    </div>
+                    
+                   </div>
+                   <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="icon/eye.svg"
+                   alt="">${info.total_view === null ? 'No Data Available' : info.total_view}</div>
+                </div>
+            </div>
         
           <p>${info.details}</p>
         `
