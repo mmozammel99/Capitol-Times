@@ -46,9 +46,9 @@ const loadedNews = async (category_id) => {
 
 
 const newsField = (newses) => {
- newses.sort((a,b) => {
-    return b.total_view - a.total_view;
- })
+    newses.sort((a, b) => {
+        return b.total_view - a.total_view;
+    })
     const newsField = document.getElementById('news-field');
     newsField.textContent = '';
 
@@ -96,9 +96,8 @@ const newsField = (newses) => {
                     </div>
                     
                    </div>
-                   <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="icon/eye.svg"
-                   alt="">${news.total_view === null ? 'No Data Available' : news.total_view}</div>
-                   <div class="col-2 "><button class="btn border-danger " id="btn-details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="selectModal('${news._id}')"><img style="width: auto; height: 20px;" src="icon/right-arrows.png" alt=""></button></div>
+                   <div class="col-5 col-md-6 ps-5 "><i class="fa-sharp fa-solid fa-eye me-3"></i>${news.total_view === null ? 'No Data Available' : news.total_view}</div>
+                   <div class="col-2 "><button class="btn btn-danger " id="btn-details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="selectModal('${news._id}')"><i class="fa-solid fa-circle-right fa-lg"></i></button></div>
                 </div>
             </div>
         </div>
@@ -157,8 +156,7 @@ const displayModal = (info) => {
                     </div>
                     
                    </div>
-                   <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="icon/eye.svg"
-                   alt="">${info.total_view === null ? 'No Data Available' : info.total_view}</div>
+                   <div class="col-5 col-md-6 ps-5 "><i class="fa-sharp fa-solid fa-eye me-3"></i>${info.total_view === null ? 'No Data Available' : info.total_view}</div>
                 </div>
             </div>
         
