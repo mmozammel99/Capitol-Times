@@ -51,19 +51,19 @@ const newsField = (newses) => {
     // news card 
 
     newses.forEach(news => {
-        const { image_url, title, details, author } = news;
-        //     const neon = news.total_view;
+        const { thumbnail_url, title, details, author } = news;
+
         const newsCard = document.createElement('div');
         newsCard.classList.add('card');
         newsCard.classList.add('my-2');
         newsCard.innerHTML = `
-        <div class="row">
-        <div class="col-md-4 p-1">
-            <img src="${image_url}" class="img-fluid rounded-start" style="width: auto; height:250px ;"alt="">
+        <div class="row rounded ">
+        <div class="col-md-3 p-1">
+            <img src="${thumbnail_url}" class="img-fluid rounded-start ms-3" alt="">
         </div>
-        <div class="col-md-8 p-3">
+        <div class="col-md-9 p-3">
                 <h5 class="card-title">${title}</h5>
-                <p class="card-text">${details.length > 350 ? details.slice(0, 350) + ' ...' : details}</p>
+                <p class="card-text">${details.length > 700 ? details.slice(0, 700) + ' ...' : details}</p>
             <div class="card-body align-items-center">
                 <div class="card-text row ">
                    <div class="col-5 col-md-4 d-flex ">
@@ -78,7 +78,7 @@ const newsField = (newses) => {
                    </div>
                    <div class="col-5 col-md-6 ps-5 "><img class="me-3" style="width: auto; height: 20px;" src="eye.svg"
                    alt="">${news.total_view === null ? 'No Data Available' : news.total_view}</div>
-                   <div class="col-2 "><button class="btn border-danger"><img style="width: auto; height: 20px;" src="right-arrows.png" alt=""></button></div>
+                   <div class="col-2 "><button class="btn border-danger " id="btn-details" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="selectModal('${news._id}')"><img style="width: auto; height: 20px;" src="right-arrows.png" alt=""></button></div>
                 </div>
             </div>
         </div>
@@ -111,6 +111,32 @@ const toggleSpend = isLodging => {
     }
 }
 
+// modal 
+
+const loadedModal = async (news_id) => {
+    const url = `https://openapi.programming-hero.com/api/news/${news_id}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    displayModal(data.data[0]);
+}
+
+const displayModal = (info) => {
+    const modelBody = document.getElementById('modal-Body');
+    modelBody.innerHTML = `
+        <div><h2 class="text-canter fw-bold">${info.title}</h2> </div> 
+        <img class="align-canter w-100 mb-5" src="${info.image_url}" alt="">
+        
+          <p>${info.details}</p>
+        `
+
+
+
+
+}
+
+const selectModal = id => {
+    loadedModal(id);
+};
 
 loadedCategory()
 loadedNews('08')
